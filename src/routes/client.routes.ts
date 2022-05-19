@@ -16,4 +16,10 @@ clientRouter.use(ensureAuth);
 
 clientRouter.get("/", ClientController.index);
 
+clientRouter.get("/:id", ClientController.show);
+
+clientRouter.patch("/:id", ClientController.update);
+
+clientRouter.delete("/:id", ClientController.delete);
+
 export default clientRouter;
