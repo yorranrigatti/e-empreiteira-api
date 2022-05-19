@@ -8,6 +8,7 @@ const routes = Router();
 
 export const productRoutes = () => {
   routes.post("", productController.store);
+  routes.get("", productController.index);
 
   return routes;
 };
