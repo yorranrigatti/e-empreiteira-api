@@ -17,4 +17,4 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use(errorMiddleware);
 
-app.listen(3000);
+app.listen(3000, () => console.log("app running @ port 3000"));
