@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import productCreateService from "../../services/product/productCreate.service";
+import productGetByIdService from "../../services/product/productgetById.service";
 import productListService from "../../services/product/productList.service";
 export default class ProductController {
   async store(req: Request, res: Response) {
@@ -11,5 +12,11 @@ export default class ProductController {
   async index(req: Request, res: Response) {
     const products = await productListService();
     return res.status(200).json({ products });
+  }
+
+  async show(req: Request, res: Response) {
+    const { product_id } = req.params;
+    const product = await productGetByIdService(product_id);
+    return res.status(200).json({ product });
   }
 }

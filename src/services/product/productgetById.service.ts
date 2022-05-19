@@ -1,0 +1,17 @@
+import { AppDataSource } from "../../data-source";
+import { Product } from "../../entities/product.entity";
+import { AppError } from "../../errors/appError";
+
+const productGetByIdService = async (product_id: string) => {
+  const productRepo = AppDataSource.getRepository(Product);
+
+  const product = await productRepo.findOne({ where: { id: product_id } });
+
+  if (!product) {
+    throw new AppError(404, "product not found");
+  }
+
+  return product;
+};
+
+export default productGetByIdService;
