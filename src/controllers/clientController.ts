@@ -7,7 +7,7 @@ import UpdateClientService from "../services/client/updateClient.service";
 
 export default class ClientController {
   static async store(req: Request, res: Response) {
-    const { name, lastName, email, password } = req.body;
+    const { name, lastName, email, password, cellphone } = req.body;
 
     const createClient = new CreateClientService();
 
@@ -16,6 +16,7 @@ export default class ClientController {
       lastName,
       email,
       password,
+      cellphone,
     });
 
     return res.status(201).json(client);
@@ -41,11 +42,17 @@ export default class ClientController {
 
   static async update(req: Request, res: Response) {
     const { id } = req.params;
-    const { name, lastName, email } = req.body;
+    const { name, lastName, email, cellphone } = req.body;
 
     const updateClient = new UpdateClientService();
 
-    const updated = await updateClient.execute({ id, name, lastName, email });
+    const updated = await updateClient.execute({
+      id,
+      name,
+      lastName,
+      email,
+      cellphone,
+    });
 
     return res.json(updated);
   }

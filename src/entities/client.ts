@@ -26,6 +26,9 @@ class Client {
   @Column()
   password: string;
 
+  @Column()
+  cellphone: number;
+
   @CreateDateColumn()
   created_at: Date;
 

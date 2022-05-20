@@ -3,6 +3,7 @@ export interface ICreateClient {
   lastName: string;
   email: string;
   password: string;
+  cellphone: number;
 }
 
 export interface IUpdateClient {
@@ -10,4 +11,5 @@ export interface IUpdateClient {
   name: string;
   lastName: string;
   email: string;
+  cellphone: number;
 }

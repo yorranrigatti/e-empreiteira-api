@@ -9,19 +9,21 @@ export default class UpdateClientService {
     name,
     lastName,
     email,
+    cellphone,
   }: IUpdateClient): Promise<Client> {
-      const clientRepository = AppDataSource.getRepository(Client)
+    const clientRepository = AppDataSource.getRepository(Client);
 
-      const client = await clientRepository.findOne({ where: { id } })
-      
-      if (!client) {
-          throw new AppError("client not found", 404)
-      }
+    const client = await clientRepository.findOne({ where: { id } });
 
-      name ? (client.name = name) : client.name
-      lastName ? (client.lastName = lastName) : client.lastName
-      email ? (client.email = email) : client.email
+    if (!client) {
+      throw new AppError("client not found", 404);
+    }
 
-      return clientRepository.save(client)
+    name ? (client.name = name) : client.name;
+    lastName ? (client.lastName = lastName) : client.lastName;
+    email ? (client.email = email) : client.email;
+    cellphone ? (client.cellphone = cellphone) : client.cellphone;
+
+    return clientRepository.save(client);
   }
 }
