@@ -50,7 +50,7 @@ export default class AdressController {
 
     const updateAdress = new UpdateAdressService();
 
-    const updated = updateAdress.execute({
+    const updated = await updateAdress.execute({
       id,
       country,
       state,
