@@ -24,6 +24,6 @@ export default class UpdateClientService {
     email ? (client.email = email) : client.email;
     cellphone ? (client.cellphone = cellphone) : client.cellphone;
 
-    return clientRepository.save(client);
+    return await clientRepository.save(client);
   }
 }

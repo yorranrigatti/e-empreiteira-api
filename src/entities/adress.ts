@@ -8,32 +8,31 @@ import {
 import { v4 as uuid } from "uuid";
 import { Exclude } from "class-transformer";
 
-@Entity("clients")
-class Client {
+@Entity("adress")
+class Adress {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
   @Column()
-  name: string;
+  country: string;
 
   @Column()
-  lastName: string;
+  state: string;
 
   @Column()
-  email: string;
-
-  @Exclude()
-  @Column()
-  password: string;
+  city: string;
 
   @Column()
-  cellphone: number;
+  street: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column()
+  number: number;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @Column()
+  complement: string;
+
+  @Column()
+  postalcode: number;
 
   constructor() {
     if (!this.id) {
@@ -42,4 +41,4 @@ class Client {
   }
 }
 
-export default Client;
+export default Adress;

@@ -13,3 +13,24 @@ export interface IUpdateClient {
   email: string;
   cellphone: number;
 }
+
+export interface ICreateAdress {
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  number: number;
+  complement?: string;
+  postalcode: number;
+}
+
+export interface IUpdateAdress {
+  id: string;
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  number: number;
+  complement?: string;
+  postalcode: number;
+}
