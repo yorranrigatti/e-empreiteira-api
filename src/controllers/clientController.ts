@@ -20,7 +20,17 @@ export default class ClientController {
       cellphone,
     });
 
-    return res.status(201).json(client);
+    const returnedClient = {
+      id: client.id,
+      name: client.name,
+      lastName: client.lastName,
+      email: client.email,
+      cellphone: client.cellphone,
+      created_at: client.created_at,
+      updated_at: client.updated_at,
+    };
+
+    return res.status(201).json(returnedClient);
   }
 
   static async index(req: Request, res: Response) {

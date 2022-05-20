@@ -21,7 +21,7 @@ export default class CreateClientService {
     });
 
     if (checkClientExists) {
-      throw new AppError("Email already exists", 401);
+      throw new AppError("Email already exists", 400);
     }
 
     const hashedPassword = await hash(password, 8);
