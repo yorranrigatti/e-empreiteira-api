@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
+    "start": "node dist/src/server.js",
+    "build": "tsc",
     "test": "jest"
   },
   "devDependencies": {
