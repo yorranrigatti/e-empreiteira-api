@@ -10,6 +10,7 @@ export const productRoutes = () => {
   routes.post("", productController.store);
   routes.get("", productController.index);
   routes.get("/:product_id", productController.show);
+  routes.delete("/:product_id", productController.delete);
 
   return routes;
 };
