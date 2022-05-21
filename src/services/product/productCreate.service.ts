@@ -1,3 +1,4 @@
+import { ILike } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Product } from "../../entities/product.entity";
 import { AppError } from "../../errors/appError";
@@ -6,7 +7,7 @@ const productCreateService = async (name: string, company_id: number) => {
   const productRepo = AppDataSource.getRepository(Product);
 
   const productAlreadyExists = await productRepo.findOne({
-    where: { name, company_id },
+    where: { name: ILike(name), company_id },
   });
 
   if (productAlreadyExists) {
