@@ -3,6 +3,7 @@ import productCreateService from "../../services/product/productCreate.service";
 import productDeleteService from "../../services/product/productDelete.service";
 import productGetByIdService from "../../services/product/productgetById.service";
 import productListService from "../../services/product/productList.service";
+import productUpdateService from "../../services/product/productUpdate.service";
 export default class ProductController {
   async store(req: Request, res: Response) {
     const { name, company_id } = req.body;
@@ -19,6 +20,13 @@ export default class ProductController {
     const { product_id } = req.params;
     const product = await productGetByIdService(product_id);
     return res.status(200).json({ product });
+  }
+
+  async update(req: Request, res: Response) {
+    const { product_id } = req.params;
+    const { name } = req.body;
+    const updatedFields = await productUpdateService(product_id, name);
+    return res.status(200).json({ message: "product updated", updatedFields });
   }
 
   async delete(req: Request, res: Response) {
