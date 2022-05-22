@@ -15,10 +15,20 @@ const productUpdateService = async (product_id: string, newName: string) => {
   await productRepo.save(product);
 
   const updatedFields = {
-    name: newName,
+    ...(newName && { name: newName }),
   };
 
   return updatedFields;
 };
 
 export default productUpdateService;
+
+/* 
+  CONDITIONAL OBJECT VALUES
+
+  const exampleObj: Object = {
+    key1 : value1,
+    key2: value2,
+    ...(exampleCondition && {exampleKey: exampleValue }) <==
+  }
+*/

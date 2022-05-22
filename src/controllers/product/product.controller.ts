@@ -3,6 +3,7 @@ import productCreateService from "../../services/product/productCreate.service";
 import productDeleteService from "../../services/product/productDelete.service";
 import productGetByIdService from "../../services/product/productgetById.service";
 import productListService from "../../services/product/productList.service";
+import productShowByCompanyService from "../../services/product/productShowByCompany.service";
 import productUpdateService from "../../services/product/productUpdate.service";
 export default class ProductController {
   async store(req: Request, res: Response) {
@@ -20,6 +21,12 @@ export default class ProductController {
     const { product_id } = req.params;
     const product = await productGetByIdService(product_id);
     return res.status(200).json({ product });
+  }
+
+  async showByCompany(req: Request, res: Response) {
+    const { company_id } = req.params;
+    const products = await productShowByCompanyService(Number(company_id));
+    return res.status(200).json(products);
   }
 
   async update(req: Request, res: Response) {
