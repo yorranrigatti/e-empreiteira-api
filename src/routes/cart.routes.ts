@@ -10,5 +10,6 @@ const cartRouter = Router();
 cartRouter.use(ensureAuth);
 
 cartRouter.post("/add", cartController.cartAddProduct);
+cartRouter.delete("/empty", cartController.emptyCart);
 
 export default cartRouter;
