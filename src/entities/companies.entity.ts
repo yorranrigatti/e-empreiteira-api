@@ -4,8 +4,10 @@ import {
   PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { CompanyOwner } from "./companyOwner.entity";
 
 @Entity("companies")
 export class Companies {
@@ -32,6 +34,11 @@ export class Companies {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany((type) => CompanyOwner, (companyOwner) => companyOwner.companies, {
+    eager: true,
+  })
+  owner: CompanyOwner[];
 
   constructor() {
     if (!this.id) {

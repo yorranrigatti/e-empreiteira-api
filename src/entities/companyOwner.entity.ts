@@ -1,5 +1,13 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Companies } from "./companies.entity";
 
 @Entity("company_owner")
 export class CompanyOwner {
@@ -23,6 +31,15 @@ export class CompanyOwner {
 
   @Column()
   cellphone: number;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @ManyToOne((type) => Companies, (companies) => companies.companyOwner)
+  companies: Companies[];
 
   constructor() {
     if (!this.id) {
