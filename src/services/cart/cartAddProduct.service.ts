@@ -12,7 +12,7 @@ const cartAddProductService = async (product_id: string, client_id: string) => {
   const client = await clientRepo.findOne({ where: { id: client_id } });
 
   if (!client) {
-    throw new AppError("no user logon", 401);
+    throw new AppError("no user logon/user not found", 401);
   }
 
   const cart = await cartRepo.findOne({ where: { id: client?.cart.id } });
