@@ -13,6 +13,12 @@ export interface ICompanyCreate {
   name: string;
   cnpj: string;
   type: string;
-  addess_id?: string;
+  addess_id: string;
   owner_id: string;
+}
+
+export interface ICompanyUpdate {
+  name: string;
+  cnpj: string;
+  type: string;
 }
