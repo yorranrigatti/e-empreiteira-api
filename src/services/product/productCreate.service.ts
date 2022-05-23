@@ -11,7 +11,7 @@ const productCreateService = async (name: string, company_id: number) => {
   });
 
   if (productAlreadyExists) {
-    throw new AppError(409, "product already exists");
+    throw new AppError("product already exists", 409);
   }
 
   const product = new Product();

@@ -8,7 +8,7 @@ const productShowByCompanyService = async (company_id: number) => {
   const products = productRepo.find({ where: { company_id } });
 
   if (!products) {
-    throw new AppError(404, "product not found");
+    throw new AppError("product not found", 404);
   }
 
   return products;

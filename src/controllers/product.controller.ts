@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import productCreateService from "../../services/product/productCreate.service";
-import productDeleteService from "../../services/product/productDelete.service";
-import productGetByIdService from "../../services/product/productgetById.service";
-import productListService from "../../services/product/productList.service";
-import productShowByCompanyService from "../../services/product/productShowByCompany.service";
-import productUpdateService from "../../services/product/productUpdate.service";
+import productCreateService from "../services/product/productCreate.service";
+import productDeleteService from "../services/product/productDelete.service";
+import productGetByIdService from "../services/product/productgetById.service";
+import productListService from "../services/product/productList.service";
+import productShowByCompanyService from "../services/product/productShowByCompany.service";
+import productUpdateService from "../services/product/productUpdate.service";
 export default class ProductController {
   async store(req: Request, res: Response) {
     const { name, company_id } = req.body;

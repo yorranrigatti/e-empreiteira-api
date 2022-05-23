@@ -8,7 +8,7 @@ const productGetByIdService = async (product_id: string) => {
   const product = await productRepo.findOne({ where: { id: product_id } });
 
   if (!product) {
-    throw new AppError(404, "product not found");
+    throw new AppError("product not found", 404);
   }
 
   return product;

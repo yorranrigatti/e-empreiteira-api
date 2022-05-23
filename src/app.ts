@@ -12,10 +12,10 @@ appRoutes(app);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
-    message: "Hello World",
+    message: "E-Empreiteira API",
   });
 });
 
 app.use(errorMiddleware);
 
-app.listen(3000, () => console.log("app running @ port 3000"));
+export default app;
