@@ -6,8 +6,8 @@ import listOneOwnerService from "../services/companyOwner/listOneOwner.service";
 import loginOwner from "../services/companyOwner/loginOwner.service";
 import updateOwnerService from "../services/companyOwner/updateOwner.service";
 
-class CompanyOwner {
-  async store(req: Request, res: Response) {
+class CompanyOwnerController {
+  static async store(req: Request, res: Response) {
     const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
       const result = createOwnerService({
@@ -23,7 +23,7 @@ class CompanyOwner {
     } catch (err) {}
   }
 
-  async show(req: Request, res: Response) {
+  static async show(req: Request, res: Response) {
     const { id } = req.params;
     try {
       const result = await listOneOwnerService(id);
@@ -32,7 +32,7 @@ class CompanyOwner {
     } catch (err) {}
   }
 
-  async index(req: Request, res: Response) {
+  static async index(req: Request, res: Response) {
     try {
       const result = await listAllOwnersService();
 
@@ -40,7 +40,7 @@ class CompanyOwner {
     } catch (err) {}
   }
 
-  async update(req: Request, res: Response) {
+  static async update(req: Request, res: Response) {
     const { id } = req.params;
     const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
@@ -57,7 +57,7 @@ class CompanyOwner {
     } catch (err) {}
   }
 
-  async delete(req: Request, res: Response) {
+  static async delete(req: Request, res: Response) {
     const { id } = req.params;
     try {
       const result = await deleteOwnerService(id);
@@ -66,7 +66,7 @@ class CompanyOwner {
     } catch (err) {}
   }
 
-  async login(req: Request, res: Response) {
+  static async login(req: Request, res: Response) {
     const { email, password } = req.body;
     try {
       const result = await loginOwner({ email, password });
@@ -76,4 +76,4 @@ class CompanyOwner {
   }
 }
 
-export default CompanyOwner;
+export default CompanyOwnerController;
