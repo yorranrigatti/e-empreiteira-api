@@ -11,5 +11,6 @@ cartRouter.use(ensureAuth);
 
 cartRouter.post("/add", cartController.cartAddProduct);
 cartRouter.delete("/empty", cartController.emptyCart);
+cartRouter.delete("/empty/id", cartController.emptyCartById);
 
 export default cartRouter;
