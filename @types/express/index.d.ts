@@ -3,5 +3,6 @@ declare namespace Express {
     client: {
       id: string;
     };
+    ownerId: string;
   }
 }
