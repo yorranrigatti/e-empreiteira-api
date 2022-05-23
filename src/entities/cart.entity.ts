@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Product } from "./product.entity";
 
 @Entity("cart")
@@ -10,5 +16,6 @@ export class Cart {
   subtotal: number;
 
   @ManyToMany((type) => Product, { eager: true })
+  @JoinTable()
   products: Product[];
 }

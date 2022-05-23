@@ -4,15 +4,13 @@ import ProductController from "../controllers/product.controller";
 
 const productController = new ProductController();
 
-const routes = Router();
+const productRouter = Router();
 
-export const productRoutes = () => {
-  routes.post("", productController.store);
-  routes.get("", productController.index);
-  routes.get("/:product_id", productController.show);
-  routes.get("/company/:company_id", productController.showByCompany);
-  routes.patch("/:product_id", productController.update);
-  routes.delete("/:product_id", productController.delete);
+productRouter.post("", productController.store);
+productRouter.get("", productController.index);
+productRouter.get("/:product_id", productController.show);
+productRouter.get("/company/:company_id", productController.showByCompany);
+productRouter.patch("/:product_id", productController.update);
+productRouter.delete("/:product_id", productController.delete);
 
-  return routes;
-};
+export default productRouter;
