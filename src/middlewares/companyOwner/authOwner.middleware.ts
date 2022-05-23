@@ -13,7 +13,7 @@ const authOwnerMiddleware = async (
       token as string,
       process.env.JWT_SECRET as string,
       (err: any, decoded: any) => {
-        req.ownerEmail = decoded.email;
+        req.ownerId = decoded.email;
         next();
       }
     );

@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { CompanyOwner } from "../../entities/companyOwner.entity";
-import { IOwnerReturn, IOwnerUpdate } from "../../interfaces/owner";
+import { IOwnerUpdate } from "../../interfaces/owner";
 import bcrypt from "bcrypt";
 
 const updateOwnerService = async (
