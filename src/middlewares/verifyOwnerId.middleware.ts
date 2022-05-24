@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from "express";
-import { AppDataSource } from "../../data-source";
-import { CompanyOwner } from "../../entities/companyOwner.entity";
-import { AppError } from "../../errors/appError";
+import { AppDataSource } from "../data-source";
+import { CompanyOwner } from "../entities/companyOwner.entity";
+import { AppError } from "../errors/appError";
 
 const verifyOwnerIdMiddleware = async (
   req: Request,
@@ -16,7 +16,7 @@ const verifyOwnerIdMiddleware = async (
     where: { id },
   });
 
-  if (owner) {
+  if (!owner) {
     throw new AppError("Not found any company owner with this id", 404);
   }
 

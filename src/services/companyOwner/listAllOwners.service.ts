@@ -7,12 +7,7 @@ const listAllOwnersService = async () => {
 
   const owners = await companyOwnerRepository.find();
 
-  const result = owners.map((owner: IOwnerReturn) => {
-    delete owner.password;
-    return owner;
-  });
-
-  return result;
+  return owners;
 };
 
 export default listAllOwnersService;

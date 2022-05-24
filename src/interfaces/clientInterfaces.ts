@@ -34,3 +34,24 @@ export interface IUpdateAdress {
   complement?: string;
   postalcode: number;
 }
+
+export interface ISetClientAdress {
+  id: string;
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  number: number;
+  complement?: string;
+  postalcode: number;
+}
+
+export interface ISetClientAdressCreate {
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  number: number;
+  complement?: string;
+  postalcode: number;
+}

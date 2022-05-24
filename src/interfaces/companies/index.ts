@@ -13,7 +13,7 @@ export interface ICompanyCreate {
   name: string;
   cnpj: string;
   type: string;
-  addess_id: string;
+  address_id: string;
   owner_id: string;
 }
 

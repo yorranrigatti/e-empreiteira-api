@@ -15,9 +15,13 @@ const loginOwner = async ({ email, password }: IOwnerLogin) => {
     throw new AppError("Wrong email/password", 403);
   }
 
-  const token = jwt.sign({ email: email }, String(process.env.JWT_SECRET), {
-    expiresIn: "1d",
-  });
+  const token = jwt.sign(
+    { email: email },
+    process.env.JWT_SECRET || "default",
+    {
+      expiresIn: "1d",
+    }
+  );
 
   return token;
 };

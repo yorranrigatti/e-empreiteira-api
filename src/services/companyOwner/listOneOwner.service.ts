@@ -9,10 +9,7 @@ const listOneOwnerService = async (id: string) => {
     where: { id },
   });
 
-  const result: IOwnerReturn = { ...owner };
-  delete result.password;
-
-  return result;
+  return owner;
 };
 
 export default listOneOwnerService;

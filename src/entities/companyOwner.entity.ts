@@ -4,7 +4,8 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
+  OneToMany,
+  JoinTable,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Companies } from "./companies.entity";
@@ -38,7 +39,10 @@ export class CompanyOwner {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne((type) => Companies, (companies) => companies)
+  @OneToMany((type) => Companies, (companies) => companies.owner, {
+    eager: true,
+  })
+  @JoinTable()
   companies: Companies[];
 
   constructor() {

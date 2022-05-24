@@ -1,17 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { AppError } from "../../errors/appError";
+import { AppError } from "../errors/appError";
 
 const authOwnerMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.headers.authorization;
+  const tokenHeader = req.headers.authorization;
   try {
+    const [, token] = tokenHeader!.split(" ");
+
     jwt.verify(
-      token as string,
-      process.env.JWT_SECRET as string,
+      token,
+      process.env.JWT_SECRET || "default",
       (err: any, decoded: any) => {
         req.ownerId = decoded.email;
         next();

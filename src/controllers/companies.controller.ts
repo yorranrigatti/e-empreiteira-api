@@ -8,13 +8,13 @@ import updateCompanyService from "../services/companies/updateCompany.service";
 
 class CompaniesController {
   static async store(req: Request, res: Response) {
-    const { name, cnpj, type, addess_id, owner_id } = req.body;
+    const { name, cnpj, type, address_id, owner_id } = req.body;
     try {
       const result = await createCompanyService({
         name,
         cnpj,
         type,
-        addess_id,
+        address_id,
         owner_id,
       });
 

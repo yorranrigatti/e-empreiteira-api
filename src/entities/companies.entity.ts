@@ -4,10 +4,14 @@ import {
   PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  ManyToOne,
+  JoinTable,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { CompanyOwner } from "./companyOwner.entity";
+import Adress from "./adress";
 
 @Entity("companies")
 export class Companies {
@@ -23,7 +27,7 @@ export class Companies {
   @Column()
   type: string;
 
-  @Column()
+  @Column({ nullable: true })
   address_id: string;
 
   @Column()
@@ -35,10 +39,15 @@ export class Companies {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany((type) => CompanyOwner, (companyOwner) => companyOwner.companies, {
+  @OneToOne((type) => Adress, {
     eager: true,
   })
-  owner: CompanyOwner[];
+  @JoinColumn()
+  address: Adress;
+
+  @ManyToOne((type) => CompanyOwner, (companyOwner) => companyOwner.companies)
+  @JoinTable()
+  owner: CompanyOwner;
 
   constructor() {
     if (!this.id) {

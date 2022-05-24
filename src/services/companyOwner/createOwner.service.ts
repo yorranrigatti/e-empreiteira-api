@@ -25,10 +25,7 @@ const createOwnerService = async ({
   companyOwnerRepository.create(owner);
   companyOwnerRepository.save(owner);
 
-  const newOwner: IOwnerReturn = { ...owner };
-  delete newOwner.password;
-
-  return newOwner;
+  return owner;
 };
 
 export default createOwnerService;

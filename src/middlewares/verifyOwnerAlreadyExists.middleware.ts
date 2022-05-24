@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from "express";
-import { AppDataSource } from "../../data-source";
-import { CompanyOwner } from "../../entities/companyOwner.entity";
-import { AppError } from "../../errors/appError";
+import { AppDataSource } from "../data-source";
+import { CompanyOwner } from "../entities/companyOwner.entity";
+import { AppError } from "../errors/appError";
 
 const verifyOwnerAlreadyExistsMiddleware = async (
   req: Request,

@@ -11,7 +11,7 @@ class CompanyOwnerController {
   static async store(req: Request, res: Response) {
     const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
-      const result = createOwnerService({
+      const result = await createOwnerService({
         name,
         lastName,
         email,
@@ -19,7 +19,7 @@ class CompanyOwnerController {
         cpf,
         cellphone,
       });
-
+      
       return res.status(201).json(result);
     } catch (err) {
       if (err instanceof AppError) {
