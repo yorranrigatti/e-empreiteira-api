@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AppError } from "../errors/appError";
+import { AppError, handleError } from "../errors/appError";
 import createCompanyService from "../services/companies/createCompany.service";
 import deleteCompanyService from "../services/companies/deleteCompany.service";
 import listAllCompaniesService from "../services/companies/listAllCompanies.service";
@@ -19,7 +19,11 @@ class CompaniesController {
       });
 
       return res.status(201).json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async show(req: Request, res: Response) {
@@ -28,7 +32,11 @@ class CompaniesController {
       const result = await listOneCompanyService(id);
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async index(req: Request, res: Response) {
@@ -36,7 +44,11 @@ class CompaniesController {
       const result = await listAllCompaniesService();
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async update(req: Request, res: Response) {
@@ -46,7 +58,11 @@ class CompaniesController {
       const result = await updateCompanyService(id, { name, cnpj, type });
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async delete(req: Request, res: Response) {
@@ -55,7 +71,11 @@ class CompaniesController {
       const result = await deleteCompanyService(id);
 
       return res.status(204).json();
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 }
 

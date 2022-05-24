@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AppError, handleError } from "../errors/appError";
 import createOwnerService from "../services/companyOwner/createOwner.service";
 import deleteOwnerService from "../services/companyOwner/deleteOwner.service";
 import listAllOwnersService from "../services/companyOwner/listAllOwners.service";
@@ -20,7 +21,11 @@ class CompanyOwnerController {
       });
 
       return res.status(201).json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async show(req: Request, res: Response) {
@@ -29,7 +34,11 @@ class CompanyOwnerController {
       const result = await listOneOwnerService(id);
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async index(req: Request, res: Response) {
@@ -37,7 +46,11 @@ class CompanyOwnerController {
       const result = await listAllOwnersService();
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async update(req: Request, res: Response) {
@@ -54,7 +67,11 @@ class CompanyOwnerController {
       });
 
       return res.json(result);
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async delete(req: Request, res: Response) {
@@ -63,7 +80,11 @@ class CompanyOwnerController {
       const result = await deleteOwnerService(id);
 
       return res.status(204).json();
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 
   static async login(req: Request, res: Response) {
@@ -72,7 +93,11 @@ class CompanyOwnerController {
       const result = await loginOwner({ email, password });
 
       return res.status(201).json({ token: result });
-    } catch (err) {}
+    } catch (err) {
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
+    }
   }
 }
 
