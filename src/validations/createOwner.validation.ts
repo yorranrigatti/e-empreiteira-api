@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const createClientSchema = {
+const createOwnerSchema = {
   schema: {
     body: {
       yupSchema: yup.object().shape({
@@ -8,6 +8,8 @@ const createClientSchema = {
         lastName: yup.string().required("lastName is required"),
         email: yup.string().required("email is required"),
         password: yup.string().required("password is required"),
+        cpf: yup.string().required("cpf is required"),
+        cellphone: yup.string().required("cellphone is required"),
       }),
       validateOptions: {
         abortEarly: false,
@@ -16,4 +18,4 @@ const createClientSchema = {
   },
 };
 
-export default createClientSchema;
+export default createOwnerSchema;
