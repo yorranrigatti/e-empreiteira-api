@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import deleteClientAdressService from "../services/adress/deleteClientAdress.service";
+import setClientAdressService from "../services/adress/setClientAdress.service";
 
 import CreateClientService from "../services/client/createClient.service";
 import DeleteClientService from "../services/client/deleteClient.service";
@@ -20,17 +22,7 @@ export default class ClientController {
       cellphone,
     });
 
-    const returnedClient = {
-      id: client.id,
-      name: client.name,
-      lastName: client.lastName,
-      email: client.email,
-      cellphone: client.cellphone,
-      created_at: client.created_at,
-      updated_at: client.updated_at,
-    };
-
-    return res.status(201).json(returnedClient);
+    return res.status(201).json(client);
   }
 
   static async index(req: Request, res: Response) {
@@ -76,5 +68,36 @@ export default class ClientController {
     const deleted = await deleteClient.execute(id);
 
     return res.json(deleted);
+  }
+
+  static async setAdress(req: Request, res: Response) {
+    const { id } = req.params;
+    const { country, state, city, street, number, complement, postalcode } =
+      req.body;
+
+    const setAdress = new  setClientAdressService();
+
+    const client = await setAdress.execute({
+      id,
+      country,
+      state,
+      city,
+      street,
+      number,
+      complement,
+      postalcode,
+    });
+
+    return res.json(client);
+  }
+
+  static async deleteAdress(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const deleteAdress = new deleteClientAdressService();
+
+    const client = await deleteAdress.execute(id);
+
+    return res.json(client);
   }
 }

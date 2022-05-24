@@ -22,4 +22,8 @@ clientRouter.patch("/:id", ClientController.update);
 
 clientRouter.delete("/:id", ClientController.delete);
 
+clientRouter.post("/:id/adress", ClientController.setAdress);
+
+clientRouter.delete("/:id/adress", ClientController.deleteAdress);
+
 export default clientRouter;

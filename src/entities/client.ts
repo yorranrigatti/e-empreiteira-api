@@ -4,9 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Exclude } from "class-transformer";
+import Adress from "./adress";
 
 @Entity("clients")
 class Client {
@@ -28,6 +31,14 @@ class Client {
 
   @Column()
   cellphone: number;
+
+  @OneToOne((type) => Adress, {
+    onDelete: "SET NULL",
+    nullable: true,
+    eager: true,
+  })
+  @JoinColumn()
+  adress: Adress;
 
   @CreateDateColumn()
   created_at: Date;
