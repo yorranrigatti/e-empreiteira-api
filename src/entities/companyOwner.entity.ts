@@ -38,7 +38,7 @@ export class CompanyOwner {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne((type) => Companies, (companies) => companies.companyOwner)
+  @ManyToOne((type) => Companies, (companies) => companies)
   companies: Companies[];
 
   constructor() {
