@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity("products")
+@Entity("Stock Products")
 class StockProducts {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
