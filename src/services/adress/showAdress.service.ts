@@ -9,7 +9,7 @@ export default class ShowAdressService {
     const adress = await adressRepository.findOne({ where: { id } });
 
     if (!adress) {
-      throw new AppError("Adress not found, 404");
+      throw new AppError("Adress not found", 404);
     }
 
     return adress;
