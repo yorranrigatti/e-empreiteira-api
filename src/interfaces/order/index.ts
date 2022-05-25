@@ -1,5 +1,6 @@
 export interface IOrder {
   id: string;
+  status: string;
   isBudget: boolean;
   delivery_date: string;
   employee_id: string;
@@ -10,9 +11,17 @@ export interface IOrder {
 }
 
 export interface IOrderCreate {
+  status: string;
   isBudget: boolean;
   delivery_date: string;
   employee_id: string;
   client_id: string;
   cart_id: string;
+}
+
+export interface IOrderUpdate {
+  id: string;
+  status?: string;
+  isBudget?: boolean;
+  delivery_date?: string;
 }
