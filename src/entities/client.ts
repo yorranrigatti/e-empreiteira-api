@@ -6,10 +6,12 @@ import {
   UpdateDateColumn,
   OneToMany,
   JoinTable,
+  OneToOne,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Exclude } from "class-transformer";
 import { Orders } from "./orders.entity";
+import { Cart } from "./cart.entity";
 
 @Entity("clients")
 class Client {
@@ -43,6 +45,10 @@ class Client {
   })
   @JoinTable()
   orders: Orders[];
+
+  @OneToOne((type) => Cart, { eager: true })
+  @JoinTable()
+  cart: Cart;
 
   constructor() {
     if (!this.id) {

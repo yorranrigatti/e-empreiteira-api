@@ -1,14 +1,7 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Exclude } from "class-transformer";
 
-@Entity("adress")
+@Entity("address")
 class Adress {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;

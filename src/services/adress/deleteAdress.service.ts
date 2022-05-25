@@ -1,6 +1,6 @@
 import { DeleteResult } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/adress";
+import Adress from "../../entities/address";
 import { AppError } from "../../errors/appError";
 
 export default class DeleteAdressService {

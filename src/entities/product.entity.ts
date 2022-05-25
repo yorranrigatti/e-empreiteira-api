@@ -1,16 +1,17 @@
 import {
-  Entity,
   Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  OneToMany,
+  CreateDateColumn,
+  Entity,
   JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import ProductCart from "./productCart.entity";
 
-@Entity("Product")
-class Product {
+@Entity("products")
+export class Product {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
@@ -18,13 +19,13 @@ class Product {
   name: string;
 
   @Column()
-  company_id: string;
+  company_id: number;
 
-  @Column()
-  create_at: Date;
+  @CreateDateColumn()
+  created_at: Date;
 
-  @Column()
-  update_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
 
   @OneToMany((type) => ProductCart, (ProductCart) => ProductCart.product, {
     eager: true,
@@ -38,5 +39,3 @@ class Product {
     }
   }
 }
-
-export default Product;

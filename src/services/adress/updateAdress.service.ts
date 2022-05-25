@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/adress";
+import Adress from "../../entities/address";
 import { AppError } from "../../errors/appError";
 import { IUpdateAdress } from "../../interfaces/clientInterfaces";
 
@@ -19,7 +19,7 @@ export default class UpdateAdressService {
     const adress = await adressRepository.findOne({ where: { id } });
 
     if (!adress) {
-      throw new AppError("Adress not found", 404);
+      throw new AppError("Address not found", 404);
     }
 
     country ? (adress.country = country) : adress.country;

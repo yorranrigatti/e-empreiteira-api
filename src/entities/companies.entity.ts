@@ -11,7 +11,7 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { CompanyOwner } from "./companyOwner.entity";
-import Adress from "./adress";
+import Address from "./address";
 
 @Entity("companies")
 export class Companies {
@@ -39,11 +39,11 @@ export class Companies {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToOne((type) => Adress, {
+  @OneToOne((type) => Address, {
     eager: true,
   })
   @JoinColumn()
-  address: Adress;
+  address: Address;
 
   @ManyToOne((type) => CompanyOwner, (companyOwner) => companyOwner.companies)
   @JoinTable()
