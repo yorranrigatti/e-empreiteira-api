@@ -4,8 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinTable,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import Client from "./client";
 
 @Entity("orders")
 export class Orders {
@@ -35,6 +38,10 @@ export class Orders {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @ManyToOne((type) => Client, (client) => client.orders)
+  @JoinTable()
+  client: Client;
 
   constructor() {
     if (!this.id) {
