@@ -11,7 +11,11 @@ const loginOwner = async ({ email, password }: IOwnerLogin) => {
     where: { email },
   });
 
-  if (!bcrypt.compareSync(password, owner!.password)) {
+  if (!owner) {
+    throw new AppError("Wrong email/password", 403);
+  }
+
+  if (!bcrypt.compareSync(password, owner.password)) {
     throw new AppError("Wrong email/password", 403);
   }
 
@@ -23,7 +27,7 @@ const loginOwner = async ({ email, password }: IOwnerLogin) => {
     }
   );
 
-  return token;
+  return { owner, token };
 };
 
 export default loginOwner;

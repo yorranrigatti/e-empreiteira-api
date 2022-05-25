@@ -26,7 +26,6 @@ const createOwnerService = async ({
 
     companyOwnerRepository.create(owner);
     await companyOwnerRepository.save(owner);
-    console.log(owner);
     return owner;
   } catch (err: any) {
     if (
@@ -38,7 +37,7 @@ const createOwnerService = async ({
       err.message ===
       'duplicate key value violates unique constraint "UQ_fccef7ad26ce72df7926a421ef6"'
     ) {
-      throw new AppError("Cfp already exists", 409);
+      throw new AppError("Cpf already exists", 409);
     } else if (
       err.message ===
       'duplicate key value violates unique constraint "UQ_0e8bc99ff4fa2e5ec94dfe5e74e"'

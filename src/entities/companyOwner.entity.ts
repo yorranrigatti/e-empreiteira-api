@@ -21,16 +21,16 @@ export class CompanyOwner {
   @Column()
   lastName: string;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   email: string;
 
   @Column()
   password: string;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   cpf: string;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   cellphone: string;
 
   @CreateDateColumn()
@@ -39,9 +39,7 @@ export class CompanyOwner {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany((type) => Companies, (companies) => companies.owner, {
-    eager: true,
-  })
+  @OneToMany((type) => Companies, (companies) => companies.owner)
   @JoinTable()
   companies: Companies[];
 

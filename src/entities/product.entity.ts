@@ -2,14 +2,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  OneToMany,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Cart } from "./cart.entity";
-import ProductCart from "./productCart.entity";
+import { Companies } from "./companies.entity";
+import StockProducts from "./stockProducts.entity";
 
 @Entity("products")
 export class Product {
@@ -19,20 +20,18 @@ export class Product {
   @Column()
   name: string;
 
-  @Column()
-  company_id: number;
-
   @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany((type) => ProductCart, (ProductCart) => ProductCart.product, {
-    eager: true,
-  })
-  @JoinTable()
-  productCart: Cart[];
+  @ManyToOne((type) => Companies, (company) => company)
+  company: Companies;
+
+  @OneToOne(() => StockProducts, { onDelete: "CASCADE" })
+  @JoinColumn()
+  stockProduct: StockProducts;
 
   constructor() {
     if (!this.id) {

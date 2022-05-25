@@ -8,9 +8,9 @@ export default class ShowClientService {
 
     const client = await clientRepository.findOne({ where: { id } });
 
-      if (!client) {
-          throw new AppError("Client not found", 404)
-      }
+    if (!client) {
+      throw new AppError("Client not found", 404);
+    }
 
     return client;
   }

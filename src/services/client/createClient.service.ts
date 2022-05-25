@@ -30,7 +30,8 @@ export default class CreateClientService {
 
     const cart = new Cart();
     cart.subtotal = 0;
-    cart.productCart = [];
+    cart.products = [];
+    cart.quantity_total_itens = 0;
     cartRepository.create(cart);
     await cartRepository.save(cart);
 

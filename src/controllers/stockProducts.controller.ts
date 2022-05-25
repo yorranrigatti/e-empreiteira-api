@@ -1,80 +1,80 @@
-import { Request, Response } from "express";
+// import { Request, Response } from "express";
 
-import CreateStockProductService from "../services/stock_products/addProduct.service";
-import DeleteStockProductService from "../services/stock_products/deleteStockProduct.service";
-import ListStockProductsService from "../services/stock_products/listStockProduct.service";
-import ShowStockProductService from "../services/stock_products/showStockProduct.service";
-import UpdateStockProductService from "../services/stock_products/updateStockProduct.service";
+// import CreateStockProductService from "../services/stock_products/addProduct.service";
+// import DeleteStockProductService from "../services/stock_products/deleteStockProduct.service";
+// import ListStockProductsService from "../services/stock_products/listStockProduct.service";
+// import ShowStockProductService from "../services/stock_products/showStockProduct.service";
+// import UpdateStockProductService from "../services/stock_products/updateStockProduct.service";
 
-export default class StockProductsController {
-  static async store(req: Request, res: Response) {
-    const { product_id } = req.params;
+// export default class StockProductsController {
+//   static async store(req: Request, res: Response) {
+//     const { product_id } = req.params;
 
-    const { sale_price, cost_price, category, mark } = req.body;
+//     const { sale_price, cost_price, category, mark } = req.body;
 
-    const addStock = new CreateStockProductService();
+//     const addStock = new CreateStockProductService();
 
-    const stockProduct = await addStock.execute({
-      product_id,
-      sale_price,
-      cost_price,
-      category,
-      mark,
-    });
+//     const stockProduct = await addStock.execute({
+//       product_id,
+//       sale_price,
+//       cost_price,
+//       category,
+//       mark,
+//     });
 
-    const returnedStockProduct = {
-      id: stockProduct.id,
-      product_id: stockProduct.product_id,
-      sale_price: stockProduct.sale_price,
-      cost_price: stockProduct.cost_price,
-      category: stockProduct.category,
-      mark: stockProduct.mark,
-    };
+//     const returnedStockProduct = {
+//       id: stockProduct.id,
+//       product_id: stockProduct.product_id,
+//       sale_price: stockProduct.sale_price,
+//       cost_price: stockProduct.cost_price,
+//       category: stockProduct.category,
+//       mark: stockProduct.mark,
+//     };
 
-    return res.status(201).json(returnedStockProduct);
-  }
+//     return res.status(201).json(returnedStockProduct);
+//   }
 
-  static async index(req: Request, res: Response) {
-    const listStock = new ListStockProductsService();
+//   static async index(req: Request, res: Response) {
+//     const listStock = new ListStockProductsService();
 
-    const stockProducts = await listStock.execute();
+//     const stockProducts = await listStock.execute();
 
-    return res.json(stockProducts);
-  }
-  static async show(req: Request, res: Response) {
-    const { id } = req.params;
+//     return res.json(stockProducts);
+//   }
+//   static async show(req: Request, res: Response) {
+//     const { id } = req.params;
 
-    const showStock = new ShowStockProductService();
+//     const showStock = new ShowStockProductService();
 
-    const stockProduct = await showStock.execute(id);
+//     const stockProduct = await showStock.execute(id);
 
-    return res.json(stockProduct);
-  }
+//     return res.json(stockProduct);
+//   }
 
-  static async update(req: Request, res: Response) {
-    const { id } = req.params;
-    const { sale_price, cost_price, category, mark } = req.body;
+//   static async update(req: Request, res: Response) {
+//     const { id } = req.params;
+//     const { sale_price, cost_price, category, mark } = req.body;
 
-    const updateStock = new UpdateStockProductService();
+//     const updateStock = new UpdateStockProductService();
 
-    const updated = await updateStock.execute({
-      id,
-      sale_price,
-      cost_price,
-      category,
-      mark,
-    });
+//     const updated = await updateStock.execute({
+//       id,
+//       sale_price,
+//       cost_price,
+//       category,
+//       mark,
+//     });
 
-    return res.json(updated);
-  }
+//     return res.json(updated);
+//   }
 
-  static async delete(req: Request, res: Response) {
-    const { id } = req.params;
+//   static async delete(req: Request, res: Response) {
+//     const { id } = req.params;
 
-    const deleteStock = new DeleteStockProductService();
+//     const deleteStock = new DeleteStockProductService();
 
-    const deleted = await deleteStock.execute(id);
+//     const deleted = await deleteStock.execute(id);
 
-    return res.json(deleted);
-  }
-}
+//     return res.json(deleted);
+//   }
+// }

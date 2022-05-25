@@ -1,16 +1,16 @@
-import { Router } from "express";
-import StockProductsController from "../controllers/stockProducts.controller";
+// import { Router } from "express";
+// import StockProductsController from "../controllers/stockProducts.controller";
 
-const stockProductRouter = Router();
+// const stockProductRouter = Router();
 
-stockProductRouter.post("/:product_id", StockProductsController.store);
+// stockProductRouter.post("/:product_id", StockProductsController.store);
 
-stockProductRouter.get("/", StockProductsController.index);
+// stockProductRouter.get("/", StockProductsController.index);
 
-stockProductRouter.get("/:id", StockProductsController.show);
+// stockProductRouter.get("/:id", StockProductsController.show);
 
-stockProductRouter.patch("/:id", StockProductsController.update);
+// stockProductRouter.patch("/:id", StockProductsController.update);
 
-stockProductRouter.delete("/:id", StockProductsController.delete);
+// stockProductRouter.delete("/:id", StockProductsController.delete);
 
-export default stockProductRouter;
+// export default stockProductRouter;

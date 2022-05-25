@@ -7,8 +7,24 @@ import productShowByCompanyService from "../services/product/productShowByCompan
 import productUpdateService from "../services/product/productUpdate.service";
 export default class ProductController {
   async store(req: Request, res: Response) {
-    const { name, company_id } = req.body;
-    const product = await productCreateService(name, company_id);
+    const {
+      name,
+      company_id,
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      qty_available,
+    } = req.body;
+    const product = await productCreateService(
+      name,
+      company_id,
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      qty_available
+    );
     return res.status(201).json({ message: "product registered", product });
   }
 
@@ -25,14 +41,29 @@ export default class ProductController {
 
   async showByCompany(req: Request, res: Response) {
     const { company_id } = req.params;
-    const products = await productShowByCompanyService(Number(company_id));
+    const products = await productShowByCompanyService(company_id);
     return res.status(200).json(products);
   }
 
   async update(req: Request, res: Response) {
-    const { product_id } = req.params;
-    const { name } = req.body;
-    const updatedFields = await productUpdateService(product_id, name);
+    const {
+      product_id,
+      name,
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      qty_available,
+    } = req.body;
+    const updatedFields = await productUpdateService(
+      product_id,
+      name,
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      qty_available
+    );
     return res.status(200).json({ message: "product updated", updatedFields });
   }
 

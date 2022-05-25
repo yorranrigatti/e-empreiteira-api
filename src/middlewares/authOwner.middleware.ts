@@ -9,7 +9,7 @@ const authOwnerMiddleware = async (
 ) => {
   const tokenHeader = req.headers.authorization;
   try {
-    const [, token] = tokenHeader!.split(" ");
+    const [token] = tokenHeader!.split(" ");
 
     jwt.verify(
       token,

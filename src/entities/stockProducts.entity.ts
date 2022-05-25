@@ -7,13 +7,10 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity("Stock Products")
+@Entity("stock_products")
 class StockProducts {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
-
-  @Column()
-  product_id: string;
 
   @Column()
   sale_price: number;
@@ -25,13 +22,16 @@ class StockProducts {
   category: string;
 
   @Column()
-  mark: string;
+  brand: string;
+
+  @Column({ nullable: true })
+  qty_available: number;
 
   @CreateDateColumn()
-  create_at: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  update_at: Date;
+  updated_at: Date;
 
   constructor() {
     if (!this.id) {
