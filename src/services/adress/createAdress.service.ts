@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/adress";
+import Adress from "../../entities/address";
 import { ICreateAdress } from "../../interfaces/clientInterfaces";
 
 export default class CreateAdressService {

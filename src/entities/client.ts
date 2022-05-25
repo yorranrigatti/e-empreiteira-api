@@ -4,9 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Exclude } from "class-transformer";
+import { Cart } from "./cart.entity";
 
 @Entity("clients")
 class Client {
@@ -34,6 +37,10 @@ class Client {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToOne((type) => Cart, { eager: true })
+  @JoinColumn()
+  cart: Cart;
 
   constructor() {
     if (!this.id) {

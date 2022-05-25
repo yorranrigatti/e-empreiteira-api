@@ -7,8 +7,8 @@ import {
   JoinTable,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
-import Cart from "./cart";
-import Product from "./product";
+import { Cart } from "./cart.entity";
+import { Product } from "./product.entity";
 
 @Entity("Product Cart")
 class ProductCart {

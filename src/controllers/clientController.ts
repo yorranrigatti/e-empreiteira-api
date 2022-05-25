@@ -28,6 +28,7 @@ export default class ClientController {
       cellphone: client.cellphone,
       created_at: client.created_at,
       updated_at: client.updated_at,
+      cart: client.cart,
     };
 
     return res.status(201).json(returnedClient);
