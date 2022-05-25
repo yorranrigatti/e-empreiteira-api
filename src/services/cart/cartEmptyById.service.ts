@@ -17,7 +17,7 @@ const cartEmptyByIdService = async (client_id?: string, cart_id?: string) => {
     const cart = await cartRepo.findOne({ where: { id: client?.cart.id } });
 
     if (cart) {
-      cart && (cart.products = []);
+      cart && (cart.productCart = []);
       await cartRepo.save(cart);
       return cart;
     }
@@ -27,7 +27,7 @@ const cartEmptyByIdService = async (client_id?: string, cart_id?: string) => {
       throw new AppError("cart not found", 404);
     }
 
-    cart && (cart.products = []);
+    cart && (cart.productCart = []);
     await cartRepo.save(cart);
     return cart;
   }

@@ -4,8 +4,8 @@ export interface IOwner {
   lastName: string;
   email: string;
   password: string;
-  cpf: number;
-  cellphone: number;
+  cpf: string;
+  cellphone: string;
 }
 
 export interface IOwnerCreate {
@@ -13,8 +13,8 @@ export interface IOwnerCreate {
   lastName: string;
   email: string;
   password: string;
-  cpf: number;
-  cellphone: number;
+  cpf: string;
+  cellphone: string;
 }
 
 export interface IOwnerReturn {
@@ -23,8 +23,8 @@ export interface IOwnerReturn {
   lastName?: string;
   email?: string;
   password?: string;
-  cpf?: number;
-  cellphone?: number;
+  cpf?: string;
+  cellphone?: string;
 }
 
 export interface IOwnerLogin {
@@ -37,6 +37,6 @@ export interface IOwnerUpdate {
   lastName?: string;
   email?: string;
   password?: string;
-  cpf?: number;
-  cellphone?: number;
+  cpf?: string;
+  cellphone?: string;
 }

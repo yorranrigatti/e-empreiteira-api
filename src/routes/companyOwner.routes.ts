@@ -10,7 +10,6 @@ const companyOwnerRouter = Router();
 companyOwnerRouter.post(
   "",
   expressYupMiddleware({ schemaValidator: createOwnerSchema }),
-  verifyOwnerAlreadyExistsMiddleware,
   CompanyOwnerController.store
 );
 companyOwnerRouter.get("", CompanyOwnerController.index);

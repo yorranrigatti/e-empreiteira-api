@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/adress";
+import Address from "../../entities/address";
 import { Companies } from "../../entities/companies.entity";
 import { AppError } from "../../errors/appError";
 import { ISetClientAdress } from "../../interfaces/clientInterfaces";
@@ -15,12 +15,12 @@ const createAddressCompanyService = async ({
   complement,
 }: ISetClientAdress) => {
   try {
-    const adressRepository = AppDataSource.getRepository(Adress);
+    const adressRepository = AppDataSource.getRepository(Address);
     const companiesRepository = AppDataSource.getRepository(Companies);
 
     const company = await companiesRepository.findOne({ where: { id } });
 
-    const adress = new Adress();
+    const adress = new Address();
     adress.city = city;
     adress.country = country;
     adress.number = Number(number);

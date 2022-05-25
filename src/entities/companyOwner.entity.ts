@@ -21,17 +21,17 @@ export class CompanyOwner {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({unique: true})
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
-  cpf: number;
+  @Column({unique: true})
+  cpf: string;
 
-  @Column()
-  cellphone: number;
+  @Column({unique: true})
+  cellphone: string;
 
   @CreateDateColumn()
   created_at: Date;

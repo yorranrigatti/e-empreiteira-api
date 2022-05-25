@@ -12,7 +12,7 @@ const cartEmptyService = async (client_id: string) => {
   const cart = await cartRepo.findOne({ where: { id: client?.cart.id } });
 
   if (cart && client) {
-    cart.products = [];
+    cart.productCart = [];
     cart.subtotal = 0;
     await cartRepo.save(cart);
     return cart;

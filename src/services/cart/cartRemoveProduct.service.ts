@@ -15,12 +15,12 @@ const cartRemoveProductService = async (
   const cart = await cartRepo.findOne({ where: { id: client?.cart.id } });
 
   if (cart) {
-    if (!cart.products.find((prod) => prod.id === product_id)) {
+    if (!cart.productCart.find((prod) => prod.id === product_id)) {
       throw new AppError("product not in the cart", 404);
     }
 
-    const removedProd = cart.products.find((prod) => prod.id === product_id);
-    cart.products = cart.products.filter((prod) => prod.id !== product_id);
+    const removedProd = cart.productCart.find((prod) => prod.id === product_id);
+    cart.productCart = cart.productCart.filter((prod) => prod.id !== product_id);
     await cartRepo.save(cart);
 
     return removedProd;

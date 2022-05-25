@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Cart } from "./cart.entity";
 import ProductCart from "./productCart.entity";
 
 @Entity("products")
@@ -31,7 +32,7 @@ export class Product {
     eager: true,
   })
   @JoinTable()
-  productCart: ProductCart[];
+  productCart: Cart[];
 
   constructor() {
     if (!this.id) {

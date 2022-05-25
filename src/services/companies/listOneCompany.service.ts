@@ -1,4 +1,5 @@
 import { AppDataSource } from "../../data-source";
+import Client from "../../entities/client";
 import { Companies } from "../../entities/companies.entity";
 
 const listOneCompanyService = async (id: string) => {

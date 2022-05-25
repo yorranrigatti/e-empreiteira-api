@@ -8,8 +8,8 @@ const createOwnerSchema = {
         lastName: yup.string().required("lastName is required"),
         email: yup.string().required("email is required"),
         password: yup.string().required("password is required"),
-        cpf: yup.string().required("cpf is required"),
-        cellphone: yup.string().required("cellphone is required"),
+        cpf: yup.number().required("cpf is required"),
+        cellphone: yup.number().required("cellphone is required"),
       }),
       validateOptions: {
         abortEarly: false,

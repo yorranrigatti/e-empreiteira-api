@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Product } from "./product.entity";
 import ProductCart from "./productCart.entity";
 
 @Entity("cart")
@@ -23,7 +24,7 @@ export class Cart {
     eager: true,
   })
   @JoinTable()
-  productCart: ProductCart[];
+  productCart: Product[];
 
   constructor() {
     if (!this.id) {
