@@ -7,6 +7,6 @@ import { AppDataSource } from "./data-source";
   });
 
   app.listen(process.env.PORT || 3000, () =>
-    console.log("Running @ port 3000")
+    console.log("Running at port 3000")
   );
 })();
