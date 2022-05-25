@@ -9,7 +9,6 @@ import updateOwnerService from "../services/companyOwner/updateOwner.service";
 
 class CompanyOwnerController {
   static async store(req: Request, res: Response) {
-    console.log("er")
     const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
       const result = await createOwnerService({
@@ -20,10 +19,10 @@ class CompanyOwnerController {
         cpf,
         cellphone,
       });
-      
+
       return res.status(201).json(result);
     } catch (err) {
-      console.log("tes")
+      console.log("tes");
       if (err instanceof AppError) {
         handleError(err, res);
       }

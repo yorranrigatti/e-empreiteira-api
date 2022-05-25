@@ -1,15 +1,19 @@
 import { AppDataSource } from "../../data-source";
 import { CompanyOwner } from "../../entities/companyOwner.entity";
-import { IOwnerReturn } from "../../interfaces/owner";
+import { AppError } from "../../errors/appError";
 
 const listOneOwnerService = async (id: string) => {
-  const companyOwnerRepository = AppDataSource.getRepository(CompanyOwner);
+  try {
+    const companyOwnerRepository = AppDataSource.getRepository(CompanyOwner);
 
-  const owner = await companyOwnerRepository.findOne({
-    where: { id },
-  });
+    const owner = await companyOwnerRepository.findOne({
+      where: { id },
+    });
 
-  return owner;
+    return owner;
+  } catch (err: any) {
+    throw new AppError(err.message, 500);
+  }
 };
 
 export default listOneOwnerService;

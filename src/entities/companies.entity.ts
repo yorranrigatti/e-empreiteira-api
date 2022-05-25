@@ -51,11 +51,11 @@ export class Companies {
   @JoinTable()
   owner: CompanyOwner;
 
-  @ManyToMany((type) => Client, {
-    eager: true,
-  })
-  @JoinTable()
-  clients: Client[];
+  // @ManyToMany((type) => Client, {
+  //   eager: true,
+  // })
+  // @JoinTable()
+  // clients: Client[];
   
   constructor() {
     if (!this.id) {
