@@ -11,7 +11,7 @@ const updateCompanyService = async (
   const company = await companiesRepository.findOne({ where: { id } });
 
   name ? (company!.name = name) : company!.name;
-  cnpj ? (company!.cnpj = Number(cnpj)) : company!.cnpj;
+  cnpj ? (company!.cnpj = cnpj) : company!.cnpj;
   type ? (company!.type = type) : company!.type;
 
   return companiesRepository.save(company!);

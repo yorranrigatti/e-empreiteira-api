@@ -21,7 +21,7 @@ const createCompanyService = async ({
 
     const company = new Companies();
     company.name = name;
-    company.cnpj = Number(cnpj);
+    company.cnpj = cnpj;
     company.type = type;
     company.owner_id = owner_id;
     company.address_id = address_id;
