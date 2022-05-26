@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/adress";
+import Adress from "../../entities/address"; 
 import Client from "../../entities/client";
 import { AppError } from "../../errors/appError";
 import { IUpdateAdress } from "../../interfaces/clientInterfaces";

@@ -8,6 +8,7 @@ import ordersRoutes from "./orders.routes";
 import stockProductRouter from "./stockProducts.routes";
 import productRouter from "./product.routes";
 import cartRouter from "./cart.routes";
+import emploeeRouter from "./emploee.routes";
 
 export const appRoutes = (app: Express) => {
   app.use("/orders", ordersRoutes);
@@ -19,4 +20,5 @@ export const appRoutes = (app: Express) => {
   app.use("/address", adressRouter);
   app.use("/products", productRouter);
   app.use("/cart", cartRouter);
+  app.use("/emploees", emploeeRouter);
 };

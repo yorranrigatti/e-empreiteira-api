@@ -15,7 +15,7 @@ interface Response {
 }
 
 export default class ClientLoginService {
-  public async execute({ email, password }: Request): Promise<Response> {
+  public async execute({ email, password }: Request) {
     const clientRepository = AppDataSource.getRepository(Client);
 
     const client = await clientRepository.findOne({
@@ -37,9 +37,6 @@ export default class ClientLoginService {
       expiresIn: "3d",
     });
 
-    return {
-      client,
-      token,
-    };
+    return {token}
   }
 }

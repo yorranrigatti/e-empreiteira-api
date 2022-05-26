@@ -9,11 +9,14 @@ import {
   OneToOne,
   JoinColumn,
   ManyToMany,
+  OneToMany,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { CompanyOwner } from "./companyOwner.entity";
 import Address from "./address";
 import Client from "./client";
+import Emploee from "./emploee";
+import { Product } from "./product.entity";
 
 @Entity("companies")
 export class Companies {
@@ -50,6 +53,16 @@ export class Companies {
   @ManyToOne((type) => CompanyOwner, (companyOwner) => companyOwner.companies)
   @JoinTable()
   owner: CompanyOwner;
+
+  @OneToMany((type) => Emploee, (emploee) => emploee.company, {
+    eager: true,
+  })
+  emploees: Emploee[];
+
+  @OneToMany((type) => Product, (products) => products.company, {
+    eager: true,
+  })
+  products: Product[];
 
   constructor() {
     if (!this.id) {

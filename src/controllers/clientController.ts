@@ -22,7 +22,6 @@ export default class ClientController {
       cellphone,
     });
 
-<<<<<<< HEAD
     const returnedClient = {
       id: client.id,
       name: client.name,
@@ -35,9 +34,6 @@ export default class ClientController {
     };
 
     return res.status(201).json(returnedClient);
-=======
-    return res.status(201).json(client);
->>>>>>> 1998d72536a2cac085c1a8bbb74556a57b3c57ec
   }
 
   static async index(req: Request, res: Response) {

@@ -22,7 +22,6 @@ class CompanyOwnerController {
 
       return res.status(201).json(result);
     } catch (err) {
-      console.log("tes");
       if (err instanceof AppError) {
         handleError(err, res);
       }

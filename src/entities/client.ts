@@ -34,7 +34,13 @@ class Client {
   password: string;
 
   @Column()
-  cellphone: number;
+  cellphone: string;
+  
+  @CreateDateColumn()
+  created_at: Date;
+  
+  @UpdateDateColumn()
+  updated_at: Date;
 
   @OneToOne((type) => Adress, {
     onDelete: "SET NULL",
@@ -43,22 +49,15 @@ class Client {
   })
   @JoinColumn()
   adress: Adress;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
+  
+  @OneToOne((type) => Cart, { eager: true })
+  @JoinColumn()
+  cart: Cart;
 
   @OneToMany((type) => Orders, (orders) => orders.client, {
     eager: true,
   })
-  @JoinTable()
   orders: Orders[];
-
-  @OneToOne((type) => Cart, { eager: true })
-  @JoinTable()
-  cart: Cart;
 
   constructor() {
     if (!this.id) {

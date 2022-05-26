@@ -16,41 +16,46 @@ export default class CreateClientService {
     password,
     cellphone,
   }: ICreateClient): Promise<IClientReturn> {
-    const clientRepository = AppDataSource.getRepository(Client);
-    const cartRepository = AppDataSource.getRepository(Cart);
+    try {
+      const clientRepository = AppDataSource.getRepository(Client);
+      const cartRepository = AppDataSource.getRepository(Cart);
 
-    const checkClientExists = await clientRepository.findOne({
-      where: {
+      const checkClientExists = await clientRepository.findOne({
+        where: {
+          email,
+        },
+      });
+
+      if (checkClientExists) {
+        throw new AppError("Email already exists", 409);
+      }
+
+      const hashedPassword = await hash(password, 8);
+
+      const cart = new Cart();
+      cart.subtotal = 0;
+      cart.quantity_total_itens = 0
+      cart.productCart = [];
+      cartRepository.create(cart);
+      await cartRepository.save(cart);
+
+      const client = clientRepository.create({
+        name,
+        lastName,
         email,
-      },
-    });
+        password: hashedPassword,
+        cellphone,
+        cart,
+      });
 
-    if (checkClientExists) {
-      throw new AppError("Email already exists", 409);
+      await clientRepository.save(client);
+
+      const clientReturned: IClientReturn = { ...client };
+      delete clientReturned.password;
+
+      return clientReturned;
+    } catch (err: any) {
+      throw new AppError(err.message, 500);
     }
-
-    const hashedPassword = await hash(password, 8);
-
-    const cart = new Cart();
-    cart.subtotal = 0;
-    cart.productCart = [];
-    cartRepository.create(cart);
-    await cartRepository.save(cart);
-
-    const client = clientRepository.create({
-      name,
-      lastName,
-      email,
-      password: hashedPassword,
-      cellphone,
-      cart,
-    });
-
-    await clientRepository.save(client);
-
-    const clientReturned: IClientReturn = { ...client };
-    delete clientReturned.password;
-
-    return clientReturned;
   }
 }
