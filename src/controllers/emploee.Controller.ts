@@ -11,11 +11,12 @@ import UpdateEmploeeService from "../services/emploee/updateEmploee.service";
 // import ShowClientService from "../services/client/showClient.service";
 // import UpdateClientService from "../services/client/updateClient.service";
 
-export default class emploeeController {
+export default class EmploeeController {
   static async store(req: Request, res: Response) {
-    const { name, lastName, email, cpf,password, cellphone, role } = req.body;
+    const { id } = req.params;
+    const { name, lastName, email, cpf, password, cellphone, role } = req.body;
 
-    const createEmploee = new CreateEmploeeService()
+    const createEmploee = new CreateEmploeeService();
 
     const emploee = await createEmploee.execute({
       name,
@@ -24,7 +25,8 @@ export default class emploeeController {
       password,
       cellphone,
       cpf,
-      role
+      role,
+      company_id: id,
     });
 
     const returnedEmploee = {
@@ -73,7 +75,7 @@ export default class emploeeController {
       email,
       cellphone,
       cpf,
-      role
+      role,
     });
 
     return res.json(updated);
@@ -82,7 +84,7 @@ export default class emploeeController {
   static async delete(req: Request, res: Response) {
     const { id } = req.params;
 
-    const deleteEmploee = new DeleteEmploeeService
+    const deleteEmploee = new DeleteEmploeeService();
 
     const deleted = await deleteEmploee.execute(id);
 

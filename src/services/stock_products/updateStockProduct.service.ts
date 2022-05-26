@@ -9,7 +9,8 @@ export default class UpdateStockProductService {
     sale_price,
     cost_price,
     category,
-    mark,
+    brand,
+    expiration_date,
   }: IStockProductUpdate): Promise<StockProducts> {
     const stockProductsRepository = AppDataSource.getRepository(StockProducts);
 
@@ -28,7 +29,10 @@ export default class UpdateStockProductService {
       ? (stockProduct.cost_price = cost_price)
       : stockProduct.cost_price;
     category ? (stockProduct.category = category) : stockProduct.category;
-    mark ? (stockProduct.mark = mark) : stockProduct.mark;
+    brand ? (stockProduct.brand = brand) : stockProduct.brand;
+    expiration_date
+      ? (stockProduct.expiration_date = expiration_date)
+      : stockProduct.expiration_date;
 
     return await stockProductsRepository.save(stockProduct);
   }

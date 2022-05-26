@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { Product } from "../../entities/product.entity";
 import { AppError } from "../../errors/appError";
 
-const productShowByCompanyService = async (company_id: number) => {
+const productShowByCompanyService = async (company_id: string) => {
   const productRepo = AppDataSource.getRepository(Product);
 
   const products = productRepo.find({ where: { company_id } });

@@ -2,21 +2,17 @@ import { Router } from "express";
 import { expressYupMiddleware } from "express-yup-middleware";
 import OrdersController from "../controllers/orders.controller";
 import verifyOrderIdExistMiddleware from "../middlewares/verifyOrderIdExist.middleware";
-import createOwnerSchema from "../validations/createOwner.validation";
+import createOrderSchema from "../validations/createOrder.validation";
 
 const ordersRoutes = Router();
 
 ordersRoutes.post(
   "",
-  expressYupMiddleware({ schemaValidator: createOwnerSchema }),
+  expressYupMiddleware({ schemaValidator: createOrderSchema }),
   OrdersController.store
 );
 ordersRoutes.get("", OrdersController.index);
-ordersRoutes.get(
-  "/:id",
-  verifyOrderIdExistMiddleware,
-  OrdersController.show
-);
+ordersRoutes.get("/:id", verifyOrderIdExistMiddleware, OrdersController.show);
 ordersRoutes.patch(
   "/:id",
   verifyOrderIdExistMiddleware,

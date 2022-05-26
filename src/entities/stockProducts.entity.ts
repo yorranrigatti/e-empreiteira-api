@@ -4,10 +4,13 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinTable,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Product } from "./product.entity";
 
-@Entity("Stock Products")
+@Entity("stock_products")
 class StockProducts {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
@@ -25,13 +28,23 @@ class StockProducts {
   category: string;
 
   @Column()
-  mark: string;
+  brand: string;
+
+  @Column()
+  expiration_date: string;
+
+  @Column()
+  quantity: number;
 
   @CreateDateColumn()
   create_at: Date;
 
   @UpdateDateColumn()
   update_at: Date;
+
+  @ManyToOne((type) => Product, (product) => product.stock)
+  @JoinTable()
+  product: Product;
 
   constructor() {
     if (!this.id) {

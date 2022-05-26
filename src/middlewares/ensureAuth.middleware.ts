@@ -14,7 +14,7 @@ export default function ensureAuth(
   }
 
   try {
-    const [token] = authHeader.split(" ");
+    const [,token] = authHeader.split(" ");
 
     const secret = process.env.SECRET_KEY || "default";
 

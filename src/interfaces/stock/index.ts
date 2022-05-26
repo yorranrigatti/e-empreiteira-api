@@ -4,7 +4,8 @@ export interface IStockProduct {
   sale_price: number;
   cost_price: number;
   category: string;
-  mark: string;
+  brand: string;
+  expiration_date: string;
   created_at: string;
   updated_at: string;
 }
@@ -14,7 +15,8 @@ export interface IStockProductCreate {
   sale_price: number;
   cost_price: number;
   category: string;
-  mark: string;
+  brand: string;
+  expiration_date: string;
 }
 
 export interface IStockProductUpdate {
@@ -22,5 +24,6 @@ export interface IStockProductUpdate {
   sale_price: number;
   cost_price: number;
   category: string;
-  mark: string;
+  brand: string;
+  expiration_date: string;
 }

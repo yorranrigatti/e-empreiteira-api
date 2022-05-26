@@ -78,19 +78,27 @@ Por enquanto, não foi implementada autenticação.
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
 - [Owners](#1-Owners)
+
   - [POST - /owners](#11-Criação-de-Owner)
   - [GET - /owners](#12-Listando-Owners)
   - [GET - /owners/:id](#13-Listando-um-Owner)
   - [PATCH - /owners/:id](#14-Atualizando-Owners)
   - [DELETE - /owners/:id](#15-Deletando-Owners)
+
 - [Clients](#2-Clients)
+
   - [POST - /clients](#21-Criação-de-Client)
   - [GET - /clients](#22-Listando-Clients)
   - [GET - /clients/:id](#23-Listando-um-Client)
   - [PATCH - /clients/:id](#24-Atualizando-Clients)
   - [DELETE - /clients/:id](#25-Deletando-Clients)
+  - [POST - /clients/:id/address](#26-Adicionando-endereço-Clients)
+  - [DELETE - /clients/:id/address](#27-Deletando-endereço-Clients)
+
 - [Sessions](#3-Sessions)
+
   - [POST - /sessions](#31-Login-de-Usuario)
+
 - [Addresses](#4-Addresses)
   - [POST - /Addresses](#41-Criação-de-Address)
   - [GET - /Addresses](#42-Listando-Addresses)
@@ -600,6 +608,96 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 ```
 DELETE /clients/:id
+Host: http://localhost:3000
+Authorization: None
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+
+```json
+Vazio
+```
+
+### Exemplo de Response:
+
+```
+200 OK
+```
+
+```json
+Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+```
+
+### Possíveis Erros:
+
+Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
+
+---
+
+### 2.6. **Adicionando endereço Clients**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/clients/:id/addresss`
+
+### Exemplo de Request:
+
+```
+POST /clients/:id/addresss
+Host: http://localhost:3000
+Authorization: None
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+
+```json
+pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+```
+
+### Schema de Validação com Yup:
+
+```javascript
+    country: yup.string().required("country is required"),
+    state: yup.string().required("state is required"),
+    city: yup.string().required("city is required"),
+    street: yup.string().required("street is required"),
+    number: yup.number().required("number is required"),
+    complement: yup.string(),
+    postalcode: yup.number().required("postalcode is required"),
+```
+
+OBS.: Chaves não presentes no schema serão removidas.
+
+### Exemplo de Response:
+
+```
+201 Created
+```
+
+```json
+pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+```
+
+### Possíveis Erros:
+
+| Código do Erro | Descrição                   |
+| -------------- | --------------------------- |
+| 409 Conflict   | Address already registered. |
+
+---
+
+### 2.7. **Deletando endereço Clients**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/clients/:id/address`
+
+### Exemplo de Request:
+
+```
+DELETE /clients/:id/address
 Host: http://localhost:3000
 Authorization: None
 Content-type: application/json

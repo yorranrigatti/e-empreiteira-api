@@ -7,11 +7,13 @@ import {
   OneToMany,
   JoinTable,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Exclude } from "class-transformer";
 import { Orders } from "./orders.entity";
 import { Cart } from "./cart.entity";
+import Adress from "./address";
 
 @Entity("clients")
 class Client {
@@ -32,23 +34,30 @@ class Client {
   password: string;
 
   @Column()
-  cellphone: number;
-
+  cellphone: string;
+  
   @CreateDateColumn()
   created_at: Date;
-
+  
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToOne((type) => Adress, {
+    onDelete: "SET NULL",
+    nullable: true,
+    eager: true,
+  })
+  @JoinColumn()
+  adress: Adress;
+  
+  @OneToOne((type) => Cart, { eager: true })
+  @JoinColumn()
+  cart: Cart;
 
   @OneToMany((type) => Orders, (orders) => orders.client, {
     eager: true,
   })
-  @JoinTable()
   orders: Orders[];
-
-  @OneToOne((type) => Cart, { eager: true })
-  @JoinTable()
-  cart: Cart;
 
   constructor() {
     if (!this.id) {

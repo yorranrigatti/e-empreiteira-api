@@ -10,7 +10,7 @@ import { v4 as uuid } from "uuid";
 import { Cart } from "./cart.entity";
 import { Product } from "./product.entity";
 
-@Entity("Product Cart")
+@Entity("product_cart")
 class ProductCart {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
@@ -19,7 +19,7 @@ class ProductCart {
   @JoinTable()
   cart: Cart[];
 
-  @ManyToOne((type) => Product, (product) => product.productCart)
+  @ManyToOne((type) => Product, (product) => product.carts)
   @JoinTable()
   product: Product[];
 

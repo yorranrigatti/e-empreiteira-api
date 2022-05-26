@@ -1,9 +1,12 @@
+import Adress from "../entities/address";
+import { Cart } from "../entities/cart.entity";
+
 export interface ICreateClient {
   name: string;
   lastName: string;
   email: string;
   password: string;
-  cellphone: number;
+  cellphone: string;
 }
 
 export interface IUpdateClient {
@@ -11,7 +14,7 @@ export interface IUpdateClient {
   name: string;
   lastName: string;
   email: string;
-  cellphone: number;
+  cellphone: string;
 }
 
 export interface ICreateAdress {
@@ -54,4 +57,17 @@ export interface ISetClientAdressCreate {
   number: number;
   complement?: string;
   postalcode: number;
+}
+
+export interface IClientReturn {
+  id: string;
+  name: string;
+  lastName: string;
+  email: string;
+  password?: string;
+  cellphone: string;
+  created_at: Date;
+  updated_at: Date;
+  adress: Adress | null;
+  cart: Cart;
 }

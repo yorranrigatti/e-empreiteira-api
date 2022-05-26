@@ -7,32 +7,35 @@ import {
   ManyToOne,
   JoinTable,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Cart } from "./cart.entity";
 import Client from "./client";
+import Emploee from "./emploee";
+import { Product } from "./product.entity";
 
 @Entity("orders")
 export class Orders {
   @PrimaryColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({unique: false})
   status: string;
 
-  @Column()
+  @Column({unique: false})
   isBudget: boolean;
 
-  @Column()
+  @Column({unique: false})
   delivery_date: string;
 
-  @Column()
+  @Column({unique: false})
   employee_id: string;
 
-  @Column()
+  @Column({unique: false})
   client_id: string;
 
-  @Column()
+  @Column({unique: false})
   cart_id: string;
 
   @CreateDateColumn()
@@ -44,8 +47,12 @@ export class Orders {
   @OneToOne((type) => Cart, {
     eager: true,
   })
+  @JoinColumn()
+  cart: Product[];
+
+  @ManyToOne((type) => Emploee, (emploee) => emploee.orders)
   @JoinTable()
-  cart: Cart;
+  emploee: Emploee;
 
   @ManyToOne((type) => Client, (client) => client.orders)
   @JoinTable()
