@@ -9,8 +9,8 @@ import updateOwnerService from "../services/companyOwner/updateOwner.service";
 
 class CompanyOwnerController {
   static async store(req: Request, res: Response) {
-    const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
+      const { name, lastName, email, password, cpf, cellphone } = req.body;
       const result = await createOwnerService({
         name,
         lastName,
@@ -29,8 +29,8 @@ class CompanyOwnerController {
   }
 
   static async show(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await listOneOwnerService(id);
 
       return res.json(result);
@@ -54,9 +54,9 @@ class CompanyOwnerController {
   }
 
   static async update(req: Request, res: Response) {
-    const { id } = req.params;
-    const { name, lastName, email, password, cpf, cellphone } = req.body;
     try {
+      const { id } = req.params;
+      const { name, lastName, email, password, cpf, cellphone } = req.body;
       const result = await updateOwnerService(id, {
         name,
         lastName,
@@ -75,8 +75,8 @@ class CompanyOwnerController {
   }
 
   static async delete(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await deleteOwnerService(id);
 
       return res.status(204).json();
@@ -88,8 +88,8 @@ class CompanyOwnerController {
   }
 
   static async login(req: Request, res: Response) {
-    const { email, password } = req.body;
     try {
+      const { email, password } = req.body;
       const result = await loginOwner({ email, password });
 
       return res.status(201).json({ token: result });

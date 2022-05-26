@@ -4,7 +4,7 @@ import Client from "../../entities/client";
 import { AppError } from "../../errors/appError";
 import { IUpdateAdress } from "../../interfaces/clientInterfaces";
 
-export default class setClientAdressService {
+export default class setClientAddressService {
   async execute({
     id,
     country,

@@ -8,6 +8,7 @@ const createClientSchema = {
         lastName: yup.string().required("lastName is required"),
         email: yup.string().required("email is required"),
         password: yup.string().required("password is required"),
+        cellphone: yup.string().required("password is required"),
       }),
       validateOptions: {
         abortEarly: false,
