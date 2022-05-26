@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import Adress from "../../entities/address";
+import Adress from "../../entities/address.entity";
 
 export default class listAdressService {
   async execute(): Promise<Adress[]> {
