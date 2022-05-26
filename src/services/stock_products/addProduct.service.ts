@@ -11,6 +11,7 @@ export default class CreateStockProductService {
     cost_price,
     category,
     mark,
+    qty_available,
   }: IStockProductCreate): Promise<StockProducts> {
     const stockProductsRepository = AppDataSource.getRepository(StockProducts);
 
@@ -30,6 +31,7 @@ export default class CreateStockProductService {
       cost_price,
       category,
       mark,
+      qty_available,
     });
 
     await stockProductsRepository.save(stockProduct);

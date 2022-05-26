@@ -24,10 +24,10 @@ const cartAddProductService = async (product_id: string, client_id: string) => {
   }
 
   if (cart && product) {
-    if (cart.productCart.find((prod) => prod.id === product.id)) {
+    if (cart.products.find((prod) => prod.id === product.id)) {
       throw new AppError("product already in cart", 409);
     }
-    cart.productCart = [...cart.productCart, product];
+    cart.products = [...cart.products, product];
     await cartRepo.save(cart);
     return cart;
   }

@@ -2,12 +2,12 @@ import {
   Column,
   Entity,
   JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Product } from "./product.entity";
-import ProductCart from "./productCart.entity";
 
 @Entity("cart")
 export class Cart {
@@ -20,11 +20,9 @@ export class Cart {
   @Column()
   quantity_total_itens: number;
 
-  @OneToMany((type) => ProductCart, (ProductCart) => ProductCart.cart, {
-    eager: true,
-  })
+  @ManyToMany((type) => Product, { eager: true })
   @JoinTable()
-  productCart: Product[];
+  products: Product[];
 
   constructor() {
     if (!this.id) {

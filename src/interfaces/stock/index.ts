@@ -15,6 +15,7 @@ export interface IStockProductCreate {
   cost_price: number;
   category: string;
   mark: string;
+  qty_available: number;
 }
 
 export interface IStockProductUpdate {
@@ -23,4 +24,5 @@ export interface IStockProductUpdate {
   cost_price: number;
   category: string;
   mark: string;
+  qty_available: number;
 }
