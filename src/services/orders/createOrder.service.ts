@@ -30,19 +30,16 @@ const createOrderService = async ({
     order.employee_id = employee_id;
     order.cart_id = client!.cart.id;
     order.client_id = client_id;
-    order.cart = [...client!.cart.productCart];
+    order.cart = client!.cart;
 
     emploee!.orders = [...emploee!.orders, order];
 
     client!.orders = [...client!.orders, order];
 
     client!.cart.productCart = [];
-    client!.cart.quantity_total_itens = 1;
-    client!.cart.subtotal = 1;
+    client!.cart.quantity_total_itens = 0;
+    client!.cart.subtotal = 0;
 
-    console.log(order, "-----------------ORDER");
-    console.log(emploee, "-----------------EMPLOEE");
-    console.log(client, "---------------CLIENT");
 
     ordersRepository.create(order);
 

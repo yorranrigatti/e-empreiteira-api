@@ -6,6 +6,7 @@ export interface IStockProduct {
   category: string;
   brand: string;
   expiration_date: string;
+  quantity: number;
   created_at: string;
   updated_at: string;
 }
@@ -17,6 +18,7 @@ export interface IStockProductCreate {
   category: string;
   brand: string;
   expiration_date: string;
+  quantity: number;
 }
 
 export interface IStockProductUpdate {
@@ -26,4 +28,5 @@ export interface IStockProductUpdate {
   category: string;
   brand: string;
   expiration_date: string;
+  quantity: number;
 }

@@ -7,7 +7,7 @@ const cartController = new CartController();
 
 const cartRouter = Router();
 
-// cartRouter.use(ensureAuth);
+cartRouter.use(ensureAuth);
 
 cartRouter.post("/add", cartController.cartAddProduct);
 cartRouter.delete("/remove", cartController.cartRemoveProduct);

@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Orders } from "./orders.entity";
 import { Product } from "./product.entity";
 import ProductCart from "./productCart.entity";
 
@@ -23,8 +24,10 @@ export class Cart {
   @OneToMany((type) => ProductCart, (ProductCart) => ProductCart.cart, {
     eager: true,
   })
-  @JoinTable()
-  productCart: Product[];
+  productCart: ProductCart[];
+
+  @OneToMany((type) => Orders, (orders) => orders.cart)
+  order: Orders[];
 
   constructor() {
     if (!this.id) {

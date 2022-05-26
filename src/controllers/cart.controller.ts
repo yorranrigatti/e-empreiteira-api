@@ -9,7 +9,7 @@ export default class CartController {
     const client_id = req.client.id;
     const cart = await cartAddProductService(product_id, client_id);
 
-    return res.status(200).json({ client_id, cart });
+    return res.status(200).json(cart);
   }
 
   async emptyCart(req: Request, res: Response) {

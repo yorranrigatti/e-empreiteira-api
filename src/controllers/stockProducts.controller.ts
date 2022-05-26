@@ -10,8 +10,14 @@ export default class StockProductsController {
   static async store(req: Request, res: Response) {
     const { product_id } = req.params;
 
-    const { sale_price, cost_price, category, brand, expiration_date } =
-      req.body;
+    const {
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      expiration_date,
+      quantity,
+    } = req.body;
 
     const addStock = new CreateStockProductService();
 
@@ -22,6 +28,7 @@ export default class StockProductsController {
       category,
       brand,
       expiration_date,
+      quantity,
     });
 
     return res.status(201).json(stockProduct);
@@ -46,7 +53,14 @@ export default class StockProductsController {
 
   static async update(req: Request, res: Response) {
     const { id } = req.params;
-    const { sale_price, cost_price, category, brand, expiration_date } = req.body;
+    const {
+      sale_price,
+      cost_price,
+      category,
+      brand,
+      expiration_date,
+      quantity,
+    } = req.body;
 
     const updateStock = new UpdateStockProductService();
 
@@ -56,7 +70,8 @@ export default class StockProductsController {
       cost_price,
       category,
       brand,
-      expiration_date
+      expiration_date,
+      quantity,
     });
 
     return res.json(updated);

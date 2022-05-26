@@ -20,22 +20,22 @@ export class Orders {
   @PrimaryColumn("uuid")
   readonly id: string;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   status: string;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   isBudget: boolean;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   delivery_date: string;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   employee_id: string;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   client_id: string;
 
-  @Column({unique: false})
+  @Column({ unique: false })
   cart_id: string;
 
   @CreateDateColumn()
@@ -44,11 +44,11 @@ export class Orders {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToOne((type) => Cart, {
+  @ManyToOne((type) => Cart, {
     eager: true,
   })
-  @JoinColumn()
-  cart: Product[];
+  @JoinTable()
+  cart: Cart;
 
   @ManyToOne((type) => Emploee, (emploee) => emploee.orders)
   @JoinTable()

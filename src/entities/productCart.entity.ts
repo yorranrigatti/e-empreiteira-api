@@ -15,13 +15,19 @@ class ProductCart {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
+  @Column()
+  client_id: string;
+
+  @Column()
+  product_id: string;
+
   @ManyToOne((type) => Cart, (Cart) => Cart.productCart)
   @JoinTable()
-  cart: Cart[];
+  cart: Cart;
 
   @ManyToOne((type) => Product, (product) => product.carts)
   @JoinTable()
-  product: Product[];
+  product: Product;
 
   constructor() {
     if (!this.id) {

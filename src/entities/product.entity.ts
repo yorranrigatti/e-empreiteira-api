@@ -50,7 +50,7 @@ export class Product {
     eager: true,
   })
   @JoinTable()
-  carts: Cart[];
+  carts: ProductCart[];
 
   constructor() {
     if (!this.id) {

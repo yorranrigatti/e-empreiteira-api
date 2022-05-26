@@ -1,5 +1,6 @@
 import Adress from "../entities/address";
 import { Cart } from "../entities/cart.entity";
+import ProductCart from "../entities/productCart.entity";
 
 export interface ICreateClient {
   name: string;
@@ -70,4 +71,5 @@ export interface IClientReturn {
   updated_at: Date;
   adress: Adress | null;
   cart: Cart;
+  productsCart?: ProductCart[];
 }
