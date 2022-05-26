@@ -36,9 +36,6 @@ class StockProducts {
   @Column()
   quantity: number;
 
-  @Column()
-  qty_available: number;
-
   @CreateDateColumn()
   create_at: Date;
 
