@@ -8,8 +8,8 @@ import updateCompanyService from "../services/companies/updateCompany.service";
 
 class CompaniesController {
   static async store(req: Request, res: Response) {
-    const { name, cnpj, type, address_id, owner_id } = req.body;
     try {
+      const { name, cnpj, type, address_id, owner_id } = req.body;
       const result = await createCompanyService({
         name,
         cnpj,
@@ -27,8 +27,8 @@ class CompaniesController {
   }
 
   static async show(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await listOneCompanyService(id);
 
       return res.json(result);
@@ -52,9 +52,9 @@ class CompaniesController {
   }
 
   static async update(req: Request, res: Response) {
-    const { id } = req.params;
-    const { name, cnpj, type } = req.body;
     try {
+      const { id } = req.params;
+      const { name, cnpj, type } = req.body;
       const result = await updateCompanyService(id, { name, cnpj, type });
 
       return res.json(result);
@@ -66,8 +66,8 @@ class CompaniesController {
   }
 
   static async delete(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await deleteCompanyService(id);
 
       return res.status(204).json();

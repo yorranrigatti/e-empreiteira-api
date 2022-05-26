@@ -26,7 +26,7 @@ describe("client - API ROUTE", () => {
     cellphone: 999999999,
   };
 
-  it("should be able to create a new user in the API", async () => {
+  test("should be able to create a new user in the API", async () => {
     const response = await request(app).post("/clients").send(clientData);
 
     expect(response.status).toBe(201);

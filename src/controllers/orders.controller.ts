@@ -8,9 +8,9 @@ import updateOrderService from "../services/orders/updateOrder.service";
 
 class OrdersController {
   static async store(req: Request, res: Response) {
-    const { status, isBudget, delivery_date, employee_id, client_id } =
-      req.body;
     try {
+      const { status, isBudget, delivery_date, employee_id, client_id } =
+        req.body;
       const result = await createOrderService({
         status,
         isBudget,
@@ -27,8 +27,8 @@ class OrdersController {
     }
   }
   static async show(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await listOneOrderService(id);
 
       return res.json(result);
@@ -50,9 +50,9 @@ class OrdersController {
     }
   }
   static async update(req: Request, res: Response) {
-    const { id } = req.params;
-    const { status, isBudget, delivery_date } = req.body;
     try {
+      const { id } = req.params;
+      const { status, isBudget, delivery_date } = req.body;
       const result = await updateOrderService({
         id,
         status,
@@ -68,8 +68,8 @@ class OrdersController {
     }
   }
   static async delete(req: Request, res: Response) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const result = await deleteOrderService(id);
 
       return res.status(204).json();

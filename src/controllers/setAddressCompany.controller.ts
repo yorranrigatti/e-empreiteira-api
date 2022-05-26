@@ -4,17 +4,17 @@ import createAddressCompanyService from "../services/companies/createAddressComp
 
 class SetAddressCompanyController {
   static async store(req: Request, res: Response) {
-    const {
-      company_id,
-      street,
-      city,
-      state,
-      number,
-      postalcode,
-      complement,
-      country,
-    } = req.body;
     try {
+      const {
+        company_id,
+        street,
+        city,
+        state,
+        number,
+        postalcode,
+        complement,
+        country,
+      } = req.body;
       const result = await createAddressCompanyService({
         id: company_id,
         street,
