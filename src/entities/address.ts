@@ -21,7 +21,9 @@ class Adress {
   @Column()
   number: number;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   complement: string;
 
   @Column()

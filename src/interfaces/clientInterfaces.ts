@@ -1,3 +1,5 @@
+import Adress from "../entities/address";
+
 export interface ICreateClient {
   name: string;
   lastName: string;
@@ -54,4 +56,16 @@ export interface ISetClientAdressCreate {
   number: number;
   complement?: string;
   postalcode: number;
+}
+
+export interface IClientReturn {
+  id: string;
+  name: string;
+  lastName: string;
+  email: string;
+  password?: string;
+  cellphone: number;
+  created_at: Date;
+  updated_at: Date;
+  adress: Adress | null;
 }
