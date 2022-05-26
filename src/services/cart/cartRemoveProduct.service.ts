@@ -20,7 +20,9 @@ const cartRemoveProductService = async (
     }
 
     const removedProd = cart.productCart.find((prod) => prod.id === product_id);
-    cart.productCart = cart.productCart.filter((prod) => prod.id !== product_id);
+    cart.productCart = cart.productCart.filter(
+      (prod) => prod.id !== product_id
+    );
     await cartRepo.save(cart);
 
     return removedProd;
