@@ -24,7 +24,7 @@ export class Companies {
   name: string;
 
   @Column()
-  cnpj: number;
+  cnpj: string;
 
   @Column()
   type: string;
@@ -51,12 +51,6 @@ export class Companies {
   @JoinTable()
   owner: CompanyOwner;
 
-  // @ManyToMany((type) => Client, {
-  //   eager: true,
-  // })
-  // @JoinTable()
-  // clients: Client[];
-  
   constructor() {
     if (!this.id) {
       this.id = uuid();
