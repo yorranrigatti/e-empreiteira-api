@@ -18,7 +18,7 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 - [Yup](https://www.npmjs.com/package/yup)
 
 A URL base da aplicação:
-http://localhost:3000
+https://api-e-empreiteira.herokuapp.com
 
 ---
 
@@ -135,13 +135,13 @@ O objeto owner é definido como:
 
 [ Voltar para os Endpoints ](#5-endpoints)
 
-### `/owners`
+### `/owner`
 
 ### Exemplo de Request:
 
 ```
-POST /owners
-Host: http://localhost:3000
+POST /owner
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -154,8 +154,8 @@ Content-type: application/json
   "lastName": "Rodrigues",
   "email": "yorran@email.com",
   "password": "senhaForte",
-  "cpf": "12312312312",
-  "cellphone": "+55(31)9 9876-5432"
+  "cpf": "14771471477",
+  "cellphone": 878787878
 }
 ```
 
@@ -179,7 +179,17 @@ OBS.: Chaves não presentes no schema serão removidas.
 ```
 
 ```json
-Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+  "id": "dcd6d535-75c3-4dad-834f-9c64a0886efb",
+  "name": "Yorran",
+  "lastName": "Rodrigues",
+  "email": "yorran@email.com",
+  "password": "$2a$10$3LT1p1VK6MJ3ni5fKDwrde42OAdOM4sAHGdLnPaqmVefHU7V0X3Pe",
+  "cpf": "14771471477",
+  "cellphone": 878787878,
+  "created_at": "2022-05-27T11:22:25.869Z",
+  "updated_at": "2022-05-27T11:22:25.869Z"
+}
 ```
 
 ### Possíveis Erros:
@@ -196,14 +206,14 @@ Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/owners`
+### `/owner`
 
 ### Exemplo de Request:
 
 ```
-GET /owners
-Host: http://localhost:3000
-Authorization: JWS Token
+GET /owner
+Host: https://api-e-empreiteira.herokuapp.com
+Authorization: none
 Content-type: application/json
 ```
 
@@ -220,7 +230,20 @@ Vazio
 ```
 
 ```json
-Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+[
+  {
+    "id": "dcd6d535-75c3-4dad-834f-9c64a0886efb",
+    "name": "Yorran",
+    "lastName": "Rodrigues",
+    "email": "yorran@email.com",
+    "password": "$2a$10$3LT1p1VK6MJ3ni5fKDwrde42OAdOM4sAHGdLnPaqmVefHU7V0X3Pe",
+    "cpf": "14771471477",
+    "cellphone": "878787878",
+    "created_at": "2022-05-27T11:22:25.869Z",
+    "updated_at": "2022-05-27T11:22:25.869Z",
+    "companies": []
+  }
+]
 ```
 
 ### Possíveis Erros:
@@ -233,14 +256,14 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/owners/:id`
+### `/owner/:id`
 
 ### Exemplo de Request:
 
 ```
-GET /owners/:id
-Host: http://localhost:3000
-Authorization: JWS Token
+GET /owner/:id
+Host: https://api-e-empreiteira.herokuapp.com
+Authorization: none
 Content-type: application/json
 ```
 
@@ -257,12 +280,25 @@ Vazio
 ```
 
 ```json
-Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+  "id": "dcd6d535-75c3-4dad-834f-9c64a0886efb",
+  "name": "Yorran",
+  "lastName": "Rodrigues",
+  "email": "yorran@email.com",
+  "password": "$2a$10$3LT1p1VK6MJ3ni5fKDwrde42OAdOM4sAHGdLnPaqmVefHU7V0X3Pe",
+  "cpf": "14771471477",
+  "cellphone": "878787878",
+  "created_at": "2022-05-27T11:22:25.869Z",
+  "updated_at": "2022-05-27T11:22:25.869Z",
+  "companies": []
+}
 ```
 
 ### Possíveis Erros:
 
-Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
+| Código do Erro | Descrição                                |
+| -------------- | ---------------------------------------- |
+| 404 Not found  | Not found any company owner with this id |
 
 ---
 
@@ -270,13 +306,13 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/owners/:id`
+### `/owner/:id`
 
 ### Exemplo de Request:
 
 ```
-PATCH /owners/:id
-Host: http://localhost:3000
+PATCH /owner/:id
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -302,12 +338,25 @@ Content-type: application/json
 ```
 
 ```json
-Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+  "id": "dcd6d535-75c3-4dad-834f-9c64a0886efb",
+  "name": "Yorran",
+  "lastName": "Rodrigues",
+  "email": "outro@email.com",
+  "password": "$2a$10$u.HQSR7WzQ5Z1bU7WuDDVep9zk2.W7VeSNKqEPaNvj.SoQK.F7ed6",
+  "cpf": "14771471477",
+  "cellphone": "878787878",
+  "created_at": "2022-05-27T11:22:25.869Z",
+  "updated_at": "2022-05-27T11:38:59.681Z",
+  "companies": []
+}
 ```
 
 ### Possíveis Erros:
 
-Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
+| Código do Erro | Descrição                                |
+| -------------- | ---------------------------------------- |
+| 404 Not found  | Not found any company owner with this id |
 
 ---
 
@@ -315,13 +364,13 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/owners/:id`
+### `/owner/:id`
 
 ### Exemplo de Request:
 
 ```
-DELETE /owners/:id
-Host: http://localhost:3000
+DELETE /owner/:id
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -339,7 +388,7 @@ Vazio
 ```
 
 ```json
-Colocar response do insomnia¨¨¨¨¨¨¨¨¨¨________________
+Nenhum corpo é retornado
 ```
 
 ### Possíveis Erros:
@@ -386,7 +435,7 @@ O objeto Client é definido como:
 
 ```
 POST /clients
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -449,7 +498,7 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```
 GET /clients
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: JWS Token
 Content-type: application/json
 ```
@@ -505,7 +554,7 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 ```
 GET /clients/:id
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: JWS Token
 Content-type: application/json
 ```
@@ -552,7 +601,7 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 ```
 PATCH /clients/:id
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -600,7 +649,7 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 ```
 DELETE /clients/:id
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -654,7 +703,7 @@ O objeto login é definido como:
 
 ```
 POST /sessions
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
@@ -672,7 +721,7 @@ Content-type: application/json
 
 [ Voltar para os Endpoints ](#5-endpoints)
 
-O objeto Client é definido como:
+O objeto Address é definido como:
 
 | Campo       | Tipo   | Descrição                      |
 | ----------- | ------ | ------------------------------ |
@@ -697,25 +746,32 @@ O objeto Client é definido como:
 
 ---
 
-### 4.1. **Criação de Address**
+### 4.1. **Criação de Address de cliente**
 
 [ Voltar para os Endpoints ](#5-endpoints)
 
-### `/addresss`
+### `/clients/:id/adress`
 
 ### Exemplo de Request:
 
 ```
 POST /addresses
-Host: http://localhost:3000
-Authorization: None
+Host: https://api-e-empreiteira.herokuapp.com
+Authorization: JWT Token
 Content-type: application/json
 ```
 
 ### Corpo da Requisição:
 
 ```json
-pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+  "country": "Brasil",
+  "state": "SP",
+  "city": "São Paulo",
+  "street": "Rua 1",
+  "number": 1,
+  "postalcode": 999999999
+}
 ```
 
 ### Schema de Validação com Yup:
@@ -739,14 +795,33 @@ OBS.: Chaves não presentes no schema serão removidas.
 ```
 
 ```json
-pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+	"id": "b8189721-96a6-4af2-9bbf-7ae7ee8b5e91",
+	"name": "Yorran",
+	"lastName": "Rodrigues",
+	"email": "yorran@email.com",
+	"password": "$2a$08$PcwkKVmuQ2OkrXHXm..m3eHJMgyww12lRNVV8x1kbdwtLmSDrc/MC",
+	"cellphone": "999999999",
+	"created_at": "2022-05-27T11:55:25.849Z",
+	"updated_at": "2022-05-27T11:56:19.310Z",
+	"adress": {
+		"id": "7fd1c91c-66ec-400e-aa83-c9e4abd4e26e",
+		"country": "Brasil",
+		"state": "SP",
+		"city": "São Paulo",
+		"street": "Rua 1",
+		"number": 1,
+		"complement": null,
+		"postalcode": 999999999
+	},
 ```
 
 ### Possíveis Erros:
 
-| Código do Erro | Descrição                   |
-| -------------- | --------------------------- |
-| 409 Conflict   | Address already registered. |
+| Código do Erro   | Descrição        |
+| ---------------- | ---------------- |
+| 401 Unauthorized | JWT is missing   |
+| 404 Not found    | Client not found |
 
 ---
 
@@ -754,13 +829,13 @@ pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/addresses`
+### `/address`
 
 ### Exemplo de Request:
 
 ```
 GET /addresses
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: JWS Token
 Content-type: application/json
 ```
@@ -778,12 +853,25 @@ Vazio
 ```
 
 ```json
-pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+[
+  {
+    "id": "7fd1c91c-66ec-400e-aa83-c9e4abd4e26e",
+    "country": "Brasil",
+    "state": "SP",
+    "city": "São Paulo",
+    "street": "Rua 1",
+    "number": 1,
+    "complement": null,
+    "postalcode": 999999999
+  }
+]
 ```
 
 ### Possíveis Erros:
 
-Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
+| Código do Erro   | Descrição      |
+| ---------------- | -------------- |
+| 401 Unauthorized | JWT is missing |
 
 ---
 
@@ -791,13 +879,13 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/addresses/:id`
+### `/address/:id`
 
 ### Exemplo de Request:
 
 ```
 GET /addresses/:id
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: JWS Token
 Content-type: application/json
 ```
@@ -815,7 +903,16 @@ Vazio
 ```
 
 ```json
-pegar do insomnia¨¨¨¨¨¨¨¨¨¨________________
+{
+  "id": "7fd1c91c-66ec-400e-aa83-c9e4abd4e26e",
+  "country": "Brasil",
+  "state": "SP",
+  "city": "Registro",
+  "street": "Rua 1",
+  "number": 1,
+  "complement": null,
+  "postalcode": 999999999
+}
 ```
 
 ### Possíveis Erros:
@@ -824,17 +921,17 @@ Nenhum, o máximo que pode acontecer é retornar uma lista vazia.
 
 ---
 
-### 4.4. **Atualizando Addresses**
+### 4.4. **Criação de Address de company**
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
-### `/addresses/:id`
+### `/companies/adress`
 
 ### Exemplo de Request:
 
 ```
 PATCH /addresses/:id
-Host: http://localhost:3000
+Host: https://api-e-empreiteira.herokuapp.com
 Authorization: None
 Content-type: application/json
 ```
