@@ -14,7 +14,6 @@ companyOwnerRouter.post(
   CompanyOwnerController.store
 );
 companyOwnerRouter.post("/login", CompanyOwnerController.login);
-companyOwnerRouter.use(ensureAuth);
 companyOwnerRouter.get("", CompanyOwnerController.index);
 companyOwnerRouter.get(
   "/:id",
