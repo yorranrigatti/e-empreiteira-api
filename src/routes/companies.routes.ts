@@ -10,6 +10,7 @@ const companiesRouter = Router();
 companiesRouter.post(
   "/",
   expressYupMiddleware({ schemaValidator: createCompanySchema }),
+  authOwnerMiddleware,
   CompaniesController.store
 );
 companiesRouter.get("/", authOwnerMiddleware, CompaniesController.index);
